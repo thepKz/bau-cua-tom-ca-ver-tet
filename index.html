@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bầu Cua Tôm Cá - Banana Edition</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -76,6 +77,7 @@
             </div>
             <button id="reset-button">Reset Game</button>
             <button id="deposit-button">Nạp Tiền</button>
+            <button id="help-button">Hướng Dẫn Chơi</button>
         </div>
     </div>
     
@@ -87,10 +89,18 @@
         </div>
     </div>
 
-    <!-- Thêm vào cuối body, trước thẻ đóng </body> -->
+  
     <div class="fireworks"></div>
     <div class="lucky-money-container"></div>
 
     <script src="javascript.js"></script>
+    
+    <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <h2>Hướng Dẫn Chơi</h2>
+            <div id="help-content"></div>
+            <button id="close-help-modal">Đóng</button>
+        </div>
+    </div>
 </body>
 </html>

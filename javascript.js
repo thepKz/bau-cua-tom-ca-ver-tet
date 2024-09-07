@@ -237,7 +237,8 @@ function createLuckyMoney() {
     const luckyMoneyContainer = document.querySelector('.lucky-money-container');
     const luckyMoney = document.createElement('div');
     luckyMoney.classList.add('lucky-money');
-    luckyMoney.style.left = Math.random() * (window.innerWidth - 40) + 'px';
+    const maxWidth = Math.min(window.innerWidth - 40, 800);
+    luckyMoney.style.left = Math.random() * maxWidth + 'px';
     luckyMoneyContainer.appendChild(luckyMoney);
 
     luckyMoney.addEventListener('click', () => {
@@ -270,4 +271,61 @@ window.addEventListener('load', () => {
     console.log('Window loaded');
     startLuckyMoneyAnimation();
     // Các khởi tạo khác nếu cần
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const helpButton = document.getElementById('help-button');
+    const helpModal = document.getElementById('help-modal');
+    const closeHelpModal = document.getElementById('close-help-modal');
+    const helpContent = document.getElementById('help-content');
+
+    helpButton.addEventListener('click', () => {
+        helpModal.style.display = 'block';
+        setTimeout(() => {
+            helpModal.classList.add('show');
+        }, 10);
+        helpContent.innerHTML = `
+            <h3>Mục tiêu:</h3>
+            <p>Đặt cược vào các biểu tượng (Bầu, Cua, Tôm, Cá, Gà, Nai) và dự đoán kết quả của 3 xúc xắc.</p>
+
+            <h3>Cách chơi:</h3>
+            <ol>
+                <li>Đặt cược: Nhấp vào biểu tượng bạn muốn đặt cược. Nhập số chuối bạn muốn đặt.</li>
+                <li>Xóc đĩa: Sau khi đặt cược, nhấn nút "Roll Dice" để xóc đĩa.</li>
+                <li>Kết quả: 3 xúc xắc sẽ hiển thị kết quả. Nếu kết quả trùng với biểu tượng bạn đặt cược, bạn sẽ thắng.</li>
+            </ol>
+
+            <h3>Cách tính tiền thắng:</h3>
+            <ul>
+                <li>Nếu biểu tượng bạn đặt cược xuất hiện 1 lần: Nhận lại tiền cược + 1 lần tiền cược</li>
+                <li>Nếu biểu tượng xuất hiện 2 lần: Nhận lại tiền cược + 2 lần tiền cược</li>
+                <li>Nếu biểu tượng xuất hiện 3 lần: Nhận lại tiền cược + 3 lần tiền cược</li>
+            </ul>
+
+            <h3>Các tính năng khác:</h3>
+            <ul>
+                <li>Nạp Tiền: Nhấn nút "Nạp Tiền" để thêm chuối vào tài khoản.</li>
+                <li>Reset Game: Nhấn nút "Reset Game" để đặt lại tất cả các cược về 0.</li>
+                <li>Lucky Money: Nhấp vào các phong bì lì xì rơi xuống để nhận thêm chuối.</li>
+            </ul>
+
+            <h3>Lưu ý:</h3>
+            <p>Hãy chơi có trách nhiệm và chỉ đặt cược trong khả năng của bạn. Đây chỉ là trò chơi giải trí!</p>
+        `;
+    });
+
+    function closeHelpModalFunction() {
+        helpModal.classList.remove('show');
+        setTimeout(() => {
+            helpModal.style.display = 'none';
+        }, 300);
+    }
+
+    closeHelpModal.addEventListener('click', closeHelpModalFunction);
+
+    window.addEventListener('click', (event) => {
+        if (event.target === helpModal) {
+            closeHelpModalFunction();
+        }
+    });
 });
