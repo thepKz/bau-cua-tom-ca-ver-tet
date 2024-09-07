@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bầu Cua Tôm Cá - Banana Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Bầu Cua Tôm Cá</h1>
+        <h2>Banana Edition</h2>
+        
+        <div class="game-board">
+            <div class="dice-container">
+                <div class="dice" id="dice1">
+                    <div class="dice-face front"></div>
+                    <div class="dice-face back"></div>
+                    <div class="dice-face top"></div>
+                    <div class="dice-face bottom"></div>
+                    <div class="dice-face right"></div>
+                    <div class="dice-face left"></div>
+                </div>
+                <div class="dice" id="dice2">
+                    <div class="dice-face front"></div>
+                    <div class="dice-face back"></div>
+                    <div class="dice-face top"></div>
+                    <div class="dice-face bottom"></div>
+                    <div class="dice-face right"></div>
+                    <div class="dice-face left"></div>
+                </div>
+                <div class="dice" id="dice3">
+                    <div class="dice-face front"></div>
+                    <div class="dice-face back"></div>
+                    <div class="dice-face top"></div>
+                    <div class="dice-face bottom"></div>
+                    <div class="dice-face right"></div>
+                    <div class="dice-face left"></div>
+                </div>
+            </div>
+            <button id="roll-button">Roll Dice</button>
+        </div>
+        
+        <div class="betting-board">
+            <div class="bet-item" data-item="bau">
+                <img src="images/bau.png" alt="Bầu">
+                <span class="bet-amount">0</span>
+            </div>
+            <div class="bet-item" data-item="cua">
+                <img src="images/cua.png" alt="Cua">
+                <span class="bet-amount">0</span>
+            </div>
+            <div class="bet-item" data-item="tom">
+                <img src="images/tom.png" alt="Tôm">
+                <span class="bet-amount">0</span>
+            </div>
+            <div class="bet-item" data-item="ca">
+                <img src="images/ca.png" alt="Cá">
+                <span class="bet-amount">0</span>
+            </div>
+            <div class="bet-item" data-item="ga">
+                <img src="images/ga.png" alt="Gà">
+                <span class="bet-amount">0</span>
+            </div>
+            <div class="bet-item" data-item="nai">
+                <img src="images/nai.png" alt="Nai">
+                <span class="bet-amount">0</span>
+            </div>
+        </div>
+        
+        <div class="player-info">
+            <div class="banana-balance">
+                <img src="images/banana.png" alt="Banana">
+                <span id="banana-count">1000</span>
+            </div>
+            <button id="reset-button">Reset Game</button>
+            <button id="deposit-button">Nạp Tiền</button>
+        </div>
+    </div>
+    
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <h2>Results</h2>
+            <p id="result-message"></p>
+            <button id="close-modal">Close</button>
+        </div>
+    </div>
+
+    <!-- Thêm vào cuối body, trước thẻ đóng </body> -->
+    <div class="fireworks"></div>
+    <div class="lucky-money-container"></div>
+
+    <script src="javascript.js"></script>
+</body>
+</html>
