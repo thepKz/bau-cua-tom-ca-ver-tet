@@ -10,8 +10,6 @@ body {
     background-image: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
     overflow: hidden;
     height: 100vh;
-    overflow-x: hidden;
-    position: relative;
 }
 
 .container {
@@ -439,4 +437,49 @@ button:hover {
 
 #help-content li {
     margin-bottom: 10px;
+}@media (max-width: 768px) {
+    .dice-container {
+        gap: 10px;
+    }
+    
+    .dice {
+        width: 60px;
+        height: 60px;
+    }
+}
+@media (max-width: 768px) {
+    .front, .back, .right, .left, .top, .bottom {
+        transform: translateZ(5px);
+    }
+@media (max-width: 768px) {
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+.betting-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .betting-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+}
+
+@media (max-width: 768px) {
+    .dice-container {
+        perspective: 600px;
+    }
+
+    .dice-face:nth-child(1) { transform: rotateY(0deg) translateZ(30px); }
+    .dice-face:nth-child(2) { transform: rotateY(90deg) translateZ(30px); }
+    .dice-face:nth-child(3) { transform: rotateY(180deg) translateZ(30px); }
+    .dice-face:nth-child(4) { transform: rotateY(-90deg) translateZ(30px); }
+    .dice-face:nth-child(5) { transform: rotateX(90deg) translateZ(30px); }
+    .dice-face:nth-child(6) { transform: rotateX(-90deg) translateZ(30px); }
 }
