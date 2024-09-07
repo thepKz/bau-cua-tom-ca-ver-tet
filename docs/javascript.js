@@ -255,8 +255,9 @@ function showMoneyPopup(element) {
     const popup = document.createElement('div');
     popup.classList.add('money-popup');
     popup.textContent = '+ Cộng 1 niềm tin';
-    popup.style.left = element.style.left;
-    popup.style.top = element.offsetTop + 'px';
+    const rect = element.getBoundingClientRect();
+    popup.style.left = `${rect.left}px`;
+    popup.style.top = `${rect.top + rect.height + 10}px`;
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 1000);
 }
