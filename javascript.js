@@ -254,9 +254,10 @@ function createLuckyMoney() {
 function showMoneyPopup(element) {
     const popup = document.createElement('div');
     popup.classList.add('money-popup');
-    popup.textContent = '+ Cộng 1 niềm tin';
+    popup.textContent = '+ 1 pass môn';
     const rect = element.getBoundingClientRect();
     popup.style.left = `${rect.left}px`;
+    popup.style.zIndex = '99999'; // Add this line to set a high z-index
     popup.style.top = `${rect.top + rect.height + 10}px`;
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 1000);
