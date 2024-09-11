@@ -1,21 +1,21 @@
+/* Base styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #8B0000;
+    background-color: #000000;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
+    background-image: linear-gradient(135deg, #a4a3a3 0%, #B22222 100%);
     overflow: hidden;
     height: 100vh;
-    overflow-x: hidden;
     position: relative;
 }
 
 .container {
-    background-color: #B22222;
+    background-image: linear-gradient(135deg, #a4a3a3 0%, #B22222 100%);
     border-radius: 20px;
     padding: 2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -30,6 +30,7 @@ body {
     scrollbar-color: #8B0000 #B22222;
 }
 
+/* Scrollbar styles */
 .container::-webkit-scrollbar {
     width: 8px;
 }
@@ -44,16 +45,19 @@ body {
     border: 2px solid #B22222;
 }
 
+/* Typography */
 h1, h2 {
     color: #FFD700;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Game board */
 .game-board {
     margin-bottom: 2rem;
 }
 
+/* Dice styles */
 .dice-container {
     display: flex;
     justify-content: center;
@@ -87,6 +91,7 @@ h1, h2 {
 .dice-face:nth-child(5) { transform: rotateX(90deg) translateZ(50px); }
 .dice-face:nth-child(6) { transform: rotateX(-90deg) translateZ(50px); }
 
+/* Button styles */
 button {
     background-color: #FFD700;
     color: #8B0000;
@@ -103,6 +108,7 @@ button:hover {
     background-color: #FFA500;
 }
 
+/* Betting board */
 .betting-board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -111,7 +117,7 @@ button:hover {
 }
 
 .bet-item {
-    background-color: #800000;
+    background-image: linear-gradient(135deg, #bf4545 0%, #dabdbd 100%);
     border-radius: 10px;
     padding: 1rem;
     display: flex;
@@ -138,6 +144,7 @@ button:hover {
     color: #FFD700;
 }
 
+/* Player info */
 .player-info {
     display: flex;
     justify-content: space-between;
@@ -160,25 +167,29 @@ button:hover {
     color: #FFD700;
 }
 
+/* Modal styles */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
+    overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
     background-color: #B22222;
     margin: 15% auto;
-    padding: 2rem;
-    border-radius: 10px;
-    max-width: 400px;
-    text-align: center;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
     color: #FFD700;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 #result-message {
@@ -186,73 +197,104 @@ button:hover {
     font-size: 1.2rem;
 }
 
+/* Help modal specific styles */
+#help-modal .modal-content {
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+#help-modal.show {
+    opacity: 1;
+}
+
+#help-modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+#close-help-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#close-help-modal:hover,
+#close-help-modal:focus {
+    color: #FFD700;
+}
+
+#help-content {
+    text-align: left;
+    margin-top: 20px;
+    padding-right: 20px;
+}
+
+#help-content h3 {
+    color: #FFD700;
+    margin-top: 20px;
+}
+
+#help-content ul, #help-content ol {
+    padding-left: 20px;
+}
+
+#help-content li {
+    margin-bottom: 10px;
+}
+
+/* Bet modal specific styles */
+#bet-modal .modal-content {
+    max-width: 400px;
+}
+
+#bet-slider {
+    width: 100%;
+    margin: 20px 0;
+}
+
+#bet-amount {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#confirm-bet, #cancel-bet {
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+/* Animations */
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.dice-container.shaking {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
     .container {
         padding: 1rem;
         width: 95%;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    h2 {
-        font-size: 1.4rem;
+        max-height: 100vh;
     }
 
     .dice-container {
         gap: 1rem;
+        perspective: 300px;
     }
-
-    .dice {
-        width: 80px;
-        height: 80px;
-    }
+    
 
     .betting-board {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .bet-item img {
-        width: 50px;
-        height: 50px;
-    }
-
-    .player-info {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    button {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-    }
-
-    #help-modal .modal-content {
-        width: 90%;
-        padding: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0.8rem;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-    }
-
-    .dice {
-        width: 60px;
-        height: 60px;
-    }
-
-    .betting-board {
         gap: 0.5rem;
     }
 
@@ -265,47 +307,17 @@ button:hover {
         height: 40px;
     }
 
+    .player-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
     button {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
+        margin-bottom: 0.5rem;
     }
 }
-
-.dice-container.shaking {
-    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
-    transform: translate3d(0, 0, 0);
-}
-
-@keyframes shake {
-    10%, 90% { transform: translate3d(-1px, 0, 0); }
-    20%, 80% { transform: translate3d(2px, 0, 0); }
-    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-    40%, 60% { transform: translate3d(4px, 0, 0); }
-}
-
-.dice-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #B22222;
-    transition: transform 0.5s ease-out;
-}
-
-.handle {
-    width: 50px;
-    height: 10px;
-    background-color: #FFD700;
-    margin: 10px auto;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.dice-cover.revealed {
-    transform: translateY(-100%);
-}
-
 .fireworks {
     position: fixed;
     top: 0;
@@ -318,15 +330,32 @@ button:hover {
 
 .firework {
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width: 10px;  /* Tăng kích thước từ 5px lên 10px */
+    height: 10px; /* Tăng kích thước từ 5px lên 10px */
     border-radius: 50%;
-    animation: explode 1s ease-out forwards;
+    animation: firework 1.5s ease-out forwards; /* Tăng thời gian animation */
 }
 
-@keyframes explode {
-    0% { transform: scale(0); opacity: 1; }
-    100% { transform: scale(30); opacity: 0; }
+@keyframes firework {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0.1); opacity: 0; }
+}
+
+/* Thêm hiệu ứng tỏa sáng */
+.firework::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: fireworkGlow 1.5s ease-out infinite;
+}
+
+@keyframes fireworkGlow {
+    0%, 100% { box-shadow: 0 0 5px 0px currentColor; }
+    50% { box-shadow: 0 0 20px 5px currentColor; }
 }
 
 .lucky-money-container {
@@ -369,8 +398,8 @@ button:hover {
     100% { transform: translateY(-50px); opacity: 0; }
 }
 
-#help-modal {
-    display: none;
+.modal-congratulations {
+    display: block;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -379,64 +408,30 @@ button:hover {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
-#help-modal.show {
-    opacity: 1;
-}
-
-#help-modal .modal-content {
-    background-color: #B22222;
+.modal-congratulations-content {
+    background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 600px;
-    color: #FFD700;
+    max-width: 500px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transform: translateY(-50px);
-    opacity: 0;
-    transition: all 0.3s ease;
+    text-align: center;
 }
 
-#help-modal.show .modal-content {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-#close-help-modal {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+#close-congratulations-modal {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-#close-help-modal:hover,
-#close-help-modal:focus {
-    color: #FFD700;
-    text-decoration: none;
-}
-
-#help-content {
-    text-align: left;
-    margin-top: 20px;
-    padding-right: 20px;
-}
-
-#help-content h3 {
-    color: #FFD700;
+    font-size: 16px;
     margin-top: 20px;
 }
 
-#help-content ul, #help-content ol {
-    padding-left: 20px;
-}
-
-#help-content li {
-    margin-bottom: 10px;
+#close-congratulations-modal:hover {
+    background-color: #45a049;
 }

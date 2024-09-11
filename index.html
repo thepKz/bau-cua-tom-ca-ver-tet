@@ -73,12 +73,13 @@
         <div class="player-info">
             <div class="banana-balance">
                 <img src="images/banana.png" alt="Banana">
-                <span id="banana-count">1000</span>
+                <span id="banana-count">5000000</span>
             </div>
-            <button id="reset-button">Reset Game</button>
-            <button id="deposit-button">Nạp Tiền</button>
+            
             <button id="help-button">Hướng Dẫn Chơi</button>
         </div>
+        
+        <div id="recovery-chances" style="color: #FFD700; margin-top: 10px;"></div>
     </div>
     
     <div id="result-modal" class="modal">
@@ -100,6 +101,15 @@
             <h2>Hướng Dẫn Chơi</h2>
             <div id="help-content"></div>
             <button id="close-help-modal">Đóng</button>
+        </div>
+    </div>
+    <div id="bet-modal" class="modal">
+        <div class="modal-content">
+            <h2>Đặt Cược</h2>
+            <input type="range" id="bet-slider" min="0" max="5000000" value="0">
+            <p>Số chuối: <span id="bet-amount">0</span></p>
+            <button id="confirm-bet">Xác Nhận</button>
+            <button id="cancel-bet">Hủy</button>
         </div>
     </div>
     <script src="javascript.js"></script>
