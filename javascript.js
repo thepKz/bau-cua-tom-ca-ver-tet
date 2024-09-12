@@ -237,7 +237,7 @@ function showResults(results, winnings) {
         message += 'Rất tiếc, bạn không thắng lần này.';
     }
     resultMessage.textContent = message;
-    resultModal.style.display = 'block';
+    resultModal.style.display = 'none';
 }
 rollButton.addEventListener('click', () => {
 
@@ -422,7 +422,7 @@ function checkForRecovery() {
         bananas = 1000000; // Hoặc số lượng chuối bạn muốn cấp khi giải cứu
         recoveryChances--;
         updateBananaCount();
-        alert(`Bạn đã được hồi phục 1.000.000 chuối. Còn ${recoveryChances} lần hồi phục.`);
+       
         return true; // Trả về true nếu đã thực hiện giải cứu
     }
     return false; // Trả về false nếu không cần giải cứu
